@@ -19,21 +19,37 @@ register.jsp
 # 데이터베이스
 전체 db명: WebDB
 
-users: [id, user_name, password, first_name]이 있는 db table
-- id: 사람에 따라 부여되는 고유값
-- user_name: 사람들이 id로 입력하는 값
-- password: 사람들이 password로 입력하는 값
-- first_name: 사람들의 First Name을 String으로 저장
-- gubun: employer, emplpoyee
+모든 Table은 utf8로 지정
 
-post: [id, writer_id, title, contents]
-- id: post에 따라 부여되는 고유값
-- writer_id: users에 대응되는 사람의 id
+users: [key, user_id, password, first_name, gubun]이 있는 db table
+- key(INT): 사람에 따라 부여되는 고유값
+    - PK, NN, UQ, AI
+- user_id(VARCHAR(32)): 사람들이 id로 입력하는 값
+    - NN, UQ
+- password(VARCHAR(45)): 사람들이 password로 입력하는 값
+    - NN
+- first_name(VARCHAR(45)): 사람들의 First Name을 String으로 저장
+    - NN
+- last_name(VARCHAR(45)): 사람들의 Last Name을 String으로 저장
+    - NN
+- gubun(INT): employer, emplpoyee
+    - NN
+    - Foreign Key to gubuns.key
+
+post: [key, writer_key, title, contents]
+- key: post에 따라 부여되는 고유값
+- writer_key: users에 대응되는 사람의 key
 - title: posting의 제목
 - contents: posting의 내용
 - finished: 종료되었다면 true, 모집중이라면 false
 
-apply: [id, post_id, user_id]
-- id: apply 목록의 고유한 id
-- post_id: 해당하는 post의 id
-- user_id: post_id에 지원한 users 테이블의 employee의 id
+apply: [key, post_key, user_key]
+- key: apply 목록의 고유한 key
+- post_key: 해당하는 post의 key
+- user_key: post_key에 지원한 users 테이블의 employee의 key
+
+gubuns: [key, gubun]
+- key(INT): gubun에 따라 부여되는 고유값
+    - PK, NN, UQ, AI
+- gubun: EMPLOYEE, EMPLOYER
+    - NN, UQ

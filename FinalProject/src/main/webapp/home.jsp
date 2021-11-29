@@ -1,3 +1,4 @@
+<%@ page import="Login.HandleLogin" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html>
@@ -8,7 +9,11 @@
 <body>
 <%@ page import="java.util.*" %>
 <%! enum Gubun {EMPLOYEE, EMPLOYER} %>
-<% boolean validated = false;
+<% 	
+	HandleLogin hl = new HandleLogin();
+	
+	
+	boolean validated = false;
 	Gubun g = Gubun.EMPLOYEE;
 	if (!validated){ %>
 		<jsp:include page="login.html"></jsp:include>

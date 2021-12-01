@@ -6,32 +6,28 @@ import javax.servlet.http.*;
 import java.sql.*;
 
 public class HandleLogin {
-	public HandleLogin() {
-		
-	}
+	public HandleLogin() {}
 	
-	public ArrayList MatchLogin(String id, String password) {
-		ArrayList loginList = new ArrayList();
-		String username = id;
+	static public userStruct MatchLogin(String username, String password) {
+		String _username = username;
 		String _password = password;
-		String SQLQuery = "SELECT * FROM Login WHERE login=?";
-		String firstName;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb?user=root&password=root!");
-			PreparedStatement pst = conn.prepareStatement("SELECT user_name,password,fisrt_name from users where user_name=? and password=?");
-			pst.setString(1, username);
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("SELECT users.key,users.user_id,users.password,users.first_name,users.last_name,gubuns.gubun from users JOIN gubuns ON users.gubun=gubuns.key where users.user_id=? and users.password=?");
+			pst.setString(1, _username);
 			pst.setString(2, _password);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				firstName = rs.getString("first_name");
+				userStruct us = new userStruct(rs.getInt("key"), rs.getString("user_id"), rs.getString("password"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("gubun"));
+				return us;
 			} else {
-				firstName = "";
+				return null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return loginList;
+		return null;
 	}
 }

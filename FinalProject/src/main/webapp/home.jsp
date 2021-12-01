@@ -8,19 +8,11 @@
 </head>
 <body>
 <%@ page import="java.util.*" %>
-<%! enum Gubun {EMPLOYEE, EMPLOYER} %>
-<% 	
-	HandleLogin hl = new HandleLogin();
-	
-	
-	boolean validated = false;
-	Gubun g = Gubun.EMPLOYEE;
-	if (!validated){ %>
-		<jsp:include page="login.html"></jsp:include>
-	<% } else if (g == Gubun.EMPLOYEE){ %>
-		<jsp:include page="employee.jsp"></jsp:include>
-	<%} else { %>
-		<jsp:include page="employer.jsp"></jsp:include>
-	<%}%>
+	<form method="post" action="validate.jsp">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<a href="register.jsp">Register</a>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>

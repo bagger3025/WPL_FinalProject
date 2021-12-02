@@ -6,20 +6,19 @@
 <head>
 </head>
 
-<body>
-
-<% 	
+<body><% 	
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	userStruct accepted = HandleLogin.MatchLogin(username, password);
+	userStruct us = HandleLogin.MatchLogin(username, password);
 
-	System.out.println(accepted);
-	if (accepted != null){
-		response.sendRedirect("employee.jsp");
-	} else {
+	if (us != null){
+		// login successful, because info matches with db
+		session.setAttribute("user", us);
 		response.sendRedirect("home.jsp");
-	}
-%>
-
+	} else {
+		// login failed
+		session.setAttribute("error", "Please check your id and password");
+		response.sendRedirect("home.jsp");
+	}%>
 </body>
 </html>

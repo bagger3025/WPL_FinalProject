@@ -1,20 +1,19 @@
 # 실행 흐름
 home.jsp
-- 로그인 하지 않을 경우: login.html
-- 로그인 실패한 경우: login.html
+- 로그인 하지 않을 경우: login.html를 forward
+- 로그인 실패한 경우: login.html를 forward
 - 로그인 성공한 경우
-    - employer: employer.jsp로 이동
-    - employee: employee.jsp로 이동
-- ~~위의 모든 경우에 홈페이지는 /home이고~~, 새로고침해도 그 페이지가 유지되어야 함
-    - ex) 로그인에 성공한 후 새로고침해도 여전히 employer.jsp나 employee.jsp가 불러져야 함
-    - 이를 위해 쿠키를 사용해야 할 듯 (일정 시간이 지나면 expire해야함)
+    - employer: employer.jsp로 forward
+    - employee: employee.jsp로 forward
+- 새로고침해도 그 페이지가 유지되어야 함
+    - ex) 로그인에 성공한 후 새로고침해도 여전히 employer.jsp나 employee.jsp가 forward 되어야 함
+    - 이를 위해 세션을 사용: https://velog.io/@max9106/JSP-Session%EC%84%B8%EC%85%98-j0k5ccyiub
+    - response.redirect를 이용하여도 parameter을 주는 방법(세션 이용): https://samdo0812.tistory.com/24
 
 register.jsp
-- home.jsp에서 로그인하지 않은 경우 이동할 수 있는 버튼을 누르면 이동함
+- home.jsp에서 로그인하지 않은 경우 이동할 수 있는 버튼을 누르면 이동
 - register에 실패할 경우 실패한 목록을 보여주는 시각적 효과가 있으면 될 듯, 즉 전 페이지로 돌아가진 않음
-- 기본적으로 first name, id(username), password, validate password, email 등을 입력받고 추후에 더 입력받는 것에 따라 db 조정 필요함
-- employer, employee 구분도 입력받아야 함
-
+- 기본적으로 first name, id(username), password, validate password, employer과 employee 구분 등을 입력받고 추후에 더 입력받는 것에 따라 db 조정 필요함
 
 # 데이터베이스
 전체 db명: webdb
@@ -117,3 +116,5 @@ apply: [key, post_key, user_key]
         - response.sendRdeirect("이동할페이지");
 - https://futurists.tistory.com/17
     - Inner Join에 대한 설명
+- https://alwaysleesh.tistory.com/13
+    - posting Insert에 대한 설명

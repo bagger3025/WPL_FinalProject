@@ -6,8 +6,11 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<body><% 	
+<body><%
+	/* DEFINE PAGE */
+	String HOMEPAGE = "../home.jsp";
+
 	session.invalidate();
-	response.sendRedirect("home.jsp");%>
+	response.sendRedirect(HOMEPAGE);%>
 </body>
 </html>

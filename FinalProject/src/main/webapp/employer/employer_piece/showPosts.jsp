@@ -4,6 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+	/* DEFINE PAGE */
+	String VIEWPOSTPAGE = "employer/employerviewpost.jsp";
+	
 	int writer_id = Integer.parseInt(request.getParameter("writer_id"));
 	int postpage;
 	if (request.getParameter("page") == null){
@@ -14,6 +17,6 @@
 	ArrayList<PostStruct> ps = Post.getPost(writer_id);%>
 <ul><%
 	for (int i = 0; i < ps.size(); i++){%>
-		<li><a href="employer/employerviewpost.jsp?key=<%=ps.get(i).key%>" target="_blank"><%=ps.get(i).title%></a></li><%
+		<li><a href="<%=VIEWPOSTPAGE %>?key=<%=ps.get(i).key%>"><%=ps.get(i).title%> / <%=ps.get(i).finished ? "FINISHED" : "" %></a></li><%
 	}%>
 </ul>

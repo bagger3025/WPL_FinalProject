@@ -33,31 +33,12 @@ users: [key, user_id, password, first_name, gubun]이 있는 db table
 |last_name|VARCHAR(45)|NN||
 |gubun|INT|NN|Foreign Key to gubuns.key|
 
-- key(INT): 사람에 따라 부여되는 고유값
-    - PK, NN, UQ, AI
-- user_id(VARCHAR(32)): 사람들이 id로 입력하는 값
-    - NN, UQ
-- password(VARCHAR(45)): 사람들이 password로 입력하는 값
-    - NN
-- first_name(VARCHAR(45)): 사람들의 First Name을 String으로 저장
-    - NN
-- last_name(VARCHAR(45)): 사람들의 Last Name을 String으로 저장
-    - NN
-- gubun(INT): employer, emplpoyee
-    - NN
-    - Foreign Key to gubuns.key
-
 gubuns: [key, gubun]
 
 |column name|type|attribute|comments|
 |---|---|---|---|
 |key|INT|PK,NN,UQ,AI||
 |gubun|String|NN,UQ|["EMPLOYER", "EMPLOYEE"]|
-
-- key(INT): gubun에 따라 부여되는 고유값
-    - PK, NN, UQ, AI
-- gubun: EMPLOYER, EMPLOYEE
-    - NN, UQ
 
 post: [key, writer_key, title, contents, finished]
 
@@ -69,19 +50,7 @@ post: [key, writer_key, title, contents, finished]
 |contents|TEXT|NN|Charset=utf8|
 |finished|TINYINT(1)|NN,UN,ZF|Default='0'|
 
-- key(INT): post에 따라 부여되는 고유값
-    - PK, NN, UQ, AI
-- writer_key(INT): users에 대응되는 사람의 key
-    - NN
-    - Foreign Key to users.key
-- title(VARCHAR(45)): posting의 제목
-    - NN, Charset=utf8
-- contents(TEXT): posting의 내용
-    - NN, Charset=utf8
-    - https://dev.mysql.com/doc/refman/8.0/en/storage-requirements.html (TEXT의 최대 크기는 2^16 bytes)
-    - https://chess72.tistory.com/185 (BLOB과 TEXT의 차이점)
-- finished(TINYINT): 종료되었다면 true, 모집중이라면 false
-    - NN, ZF, Default=0
+TODO: 시급? 월급? 그리고 위치? 등등..
 
 apply: [key, post_key, user_key]
 
@@ -90,16 +59,6 @@ apply: [key, post_key, user_key]
 |key|INT|PK,NN,UQ,AI||
 |post_key|INT|NN|Foreign Key to post.key|
 |user_key|INT|NN|Foreign Key to users.key|
-
-- key(INT): apply 목록의 고유한 key
-    - PK, NN, UQ
-- post_key(INT): 해당하는 post의 key
-    - NN
-    - Foreign Key to post.key
-- user_key(INT): post_key에 지원한 users 테이블의 employee의 key
-    - NN
-    - Foreign Key to users.key
-
 
 # Other References
 - https://doublesprogramming.tistory.com/58
@@ -118,3 +77,14 @@ apply: [key, post_key, user_key]
     - Inner Join에 대한 설명
 - https://alwaysleesh.tistory.com/13
     - posting Insert에 대한 설명
+
+# TODO List
+- [ ] 회원가입 시 더 많은 input 점검이 필요
+- [ ] post 불러오는 것이 0개일 때도 되는지 점검 필요
+- [ ] employee에서 pagination 점검
+- [ ] finished인 job은 employee나 employer에서 띄워줄 때 따로 구별 필요
+- [ ] 월급, 시급 등 급여 정보가 추가되어야 함
+- [x] 회원가입을 DB와 연동
+- [ ] job에 대해 employee가 apply할 수 있도록 연동
+- [ ] job에 대해 employer가 apply를 볼 수 있도록 연동
+- [ ] Finish된 job은 apply할 수 없도록 변경

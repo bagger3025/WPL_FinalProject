@@ -4,12 +4,12 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<jsp:include page="/employer/employer_piece/uservalidate.jsp"></jsp:include><%
+<body><%
+	/* DEFINE PAGE */
+	String USERVALIDATE = "../employer_piece/uservalidate.jsp";
+	String HOMEPAGE = "../../home.jsp";
+	String ALBAPOST = "../albapost.jsp";%>
+	<jsp:include page="<%=USERVALIDATE %>"></jsp:include><%
 	String title = request.getParameter("title");
 	String post = request.getParameter("post");
 	userStruct us = (userStruct)session.getAttribute("user");
@@ -19,10 +19,10 @@
 	boolean uploaded = Post.doPost(writer_key, title, post);
 	System.out.println("uploaded: " + uploaded);
 	if (uploaded){
-		response.sendRedirect("../../home.jsp");
+		response.sendRedirect(HOMEPAGE);
 	} else {
 		session.setAttribute("error", "Couldn't upload the post");
-		response.sendRedirect("../albapost.jsp");
+		response.sendRedirect(ALBAPOST);
 	}%>
 </body>
 </html>

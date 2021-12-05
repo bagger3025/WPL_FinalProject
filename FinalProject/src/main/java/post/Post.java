@@ -6,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
-
-import Login.userStruct;
-
 public class Post {
 	public Post() {}
 	
@@ -47,7 +43,26 @@ public class Post {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<PostStruct>();
+	}
+	
+	static public ArrayList<PostStruct> getPostAll(){
+		ArrayList<PostStruct> ps = new ArrayList<PostStruct>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("SELECT * FROM post");
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"));
+				ps.add(temp);
+			}
+			pst.close();
+			return ps;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<PostStruct>();
 	}
 
 	static public PostStruct getPostFromKey(String key) {
@@ -69,5 +84,20 @@ public class Post {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	static public boolean FinishPost(String key) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("UPDATE post SET post.finished=1 WHERE(post.key=?)");
+			pst.setString(1, key);
+			pst.execute();
+			pst.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

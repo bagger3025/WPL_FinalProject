@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-THIS IS EMPLOYEE PAGE
+
 </body>
 </html>

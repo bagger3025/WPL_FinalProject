@@ -1,3 +1,9 @@
+<%
+	/* DEFINE PAGE */
+	String TOVALIDATELOGIN = "validate/validateLogin.jsp";
+	String REGISTERPAGE = "register.jsp";
+%>
+
 <!-- Message from register -->
 <div class="register-success"><%=
 	request.getParameter("register")%>
@@ -9,11 +15,11 @@
 </div>
 
 <!-- Login Form -->
-<form method="post" action="validateLogin.jsp">
+<form method="post" action="<%=TOVALIDATELOGIN %>">
 	<input type="text" name="username">
 	<input type="password" name="password">
 	<input type="submit" value="Submit">
 </form>
 
 <!-- Register Button -->
-<a href="register.jsp">Register</a>
+<a href="<%=REGISTERPAGE%>">Register</a>

@@ -14,7 +14,7 @@ public class HandleLogin {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb?user=root&password=root!");
 			PreparedStatement pst = conn.prepareStatement("SELECT users.key,users.user_id,users.password,users.first_name,users.last_name,gubuns.gubun from users JOIN gubuns ON users.gubun=gubuns.key where users.user_id=? and users.password=?");
 			pst.setString(1, _username);
 			pst.setString(2, _password);
@@ -54,5 +54,44 @@ public class HandleLogin {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	static private String getGubun(String gubun) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("SELECT gubuns.key from gubuns WHERE gubuns.gubun=?");
+			pst.setString(1, gubun);
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				System.out.println("gubun key is " + rs.getInt("key"));
+				return Integer.toString(rs.getInt("key"));
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "-1";
+	}
+	
+	static public boolean Register(String username, String password, String FirstName, String LastName, String gubun) {
+		try {
+			String gubunkey = getGubun(gubun);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO users (user_id, password, first_name, last_name, gubun) VALUES (?, ?, ?, ?, ?)");
+			pst.setString(1, username);
+			pst.setString(2, password);
+			pst.setString(3, FirstName);
+			pst.setString(4, LastName);
+			pst.setString(5, gubunkey);
+			pst.execute();
+			pst.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

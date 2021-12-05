@@ -6,8 +6,12 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
-	<jsp:include page="employer_piece/uservalidate.jsp"></jsp:include><%
+<body><%
+	/* DEFINE PAGE */
+	String USERVALIDATE = "employer_piece/uservalidate.jsp";
+	String POSTTODB = "process/uploadpost.jsp";
+	%>
+	<jsp:include page="<%=USERVALIDATE %>"></jsp:include><%
 	String error = (String)session.getAttribute("error");
 	if (error != null){
 		session.removeAttribute("error");
@@ -16,7 +20,7 @@
 	}%>
 	
 	<div class="error-message"><%=error%></div>
-	<form method="post" action="process/uploadpost.jsp">
+	<form method="post" action="<%=POSTTODB%>">
 		<input type="text" name="title" value="">
 		<textarea name="post"></textarea>
 		<input type="submit" value="submit">

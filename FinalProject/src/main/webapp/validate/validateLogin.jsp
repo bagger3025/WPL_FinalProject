@@ -6,19 +6,23 @@
 <head>
 </head>
 
-<body><% 	
+<body><%
+	/* DEFINE PAGE */
+	String HOMEPAGE = "../home.jsp";
+	
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
+	System.out.println(username + " " + password);
 	userStruct us = HandleLogin.MatchLogin(username, password);
 
 	if (us != null){
 		// login successful, because info matches with db
 		session.setAttribute("user", us);
-		response.sendRedirect("home.jsp");
+		response.sendRedirect(HOMEPAGE);
 	} else {
 		// login failed
 		session.setAttribute("error", "Please check your id and password");
-		response.sendRedirect("home.jsp");
+		response.sendRedirect(HOMEPAGE);
 	}%>
 </body>
 </html>

@@ -6,13 +6,16 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<body><%	
+<body><%
+	/* DEFINE PAGE */
+	String VALIDATEREGISTERPAGE = "validate/validateRegister.jsp";
+	
 	String register = (String)session.getAttribute("register");
 	if (register != null){
 		session.removeAttribute("register");%>
 		<p><%=register%></p><%	
 	}%>
-	<form method="post" action="validateRegister.jsp">
+	<form method="post" action="<%=VALIDATEREGISTERPAGE%>">
 		<table>
 			<tr>
 				<td>id</td>

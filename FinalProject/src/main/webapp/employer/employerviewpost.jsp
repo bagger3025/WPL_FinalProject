@@ -1,3 +1,4 @@
+<%@page import="applyalba.Alba"%>
 <%@page import="Login.userStruct"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="post.Post"%>
@@ -26,7 +27,7 @@
 		<form method="post" action="<%=HOMEPAGE%>"><button>Go Back</button></form>
 		<p>Apply List</p>
 		<ul class="apply-list"><%
-			ArrayList<userStruct> us = new ArrayList<userStruct>();
+			ArrayList<userStruct> us = Alba.getapplyList(key);
 			for(int i = 0; i < us.size(); i++){%>
 				<li><%=us.get(i).key %> - <%=us.get(i).last_name %>(<%=us.get(i).user_id %>)</li><%
 			}%>

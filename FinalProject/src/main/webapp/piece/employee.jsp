@@ -25,7 +25,7 @@ THIS IS EMPLOYEE PAGE
 
 <ul><%
 	for (int i = pageNum * josbperpage; i < pageNum * josbperpage + josbperpage && i < ps.size(); i++){%>
-		<li><a href="employee/viewpost.jsp?key=<%=ps.get(i).key%>"><%=ps.get(i).title%></a></li><%
+		<li><a href="employee/viewpost.jsp?key=<%=ps.get(i).key%>"><%=ps.get(i).title%> / <%=ps.get(i).finished ? "FINISHED" : "" %></a></li><%
 	}%>
 	
 </ul>

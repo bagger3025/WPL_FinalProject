@@ -82,9 +82,11 @@ apply: [key, post_key, user_key]
 - [ ] 회원가입 시 더 많은 input 점검이 필요
 - [ ] post 불러오는 것이 0개일 때도 되는지 점검 필요
 - [ ] employee에서 pagination 점검
-- [ ] finished인 job은 employee나 employer에서 띄워줄 때 따로 구별 필요
+- [x] finished인 job은 employee나 employer에서 띄워줄 때 따로 구별 필요
 - [ ] 월급, 시급 등 급여 정보가 추가되어야 함
 - [x] 회원가입을 DB와 연동
-- [ ] job에 대해 employee가 apply할 수 있도록 연동
-- [ ] job에 대해 employer가 apply를 볼 수 있도록 연동
-- [ ] Finish된 job은 apply할 수 없도록 변경
+- [x] job에 대해 employee가 apply할 수 있도록 연동
+- [x] job에 대해 employer가 apply를 볼 수 있도록 연동
+- [x] Finish된 job은 apply할 수 없도록 변경
+- [ ] css 적용 (bootstrap?)
+- [ ] contact me 페이지 만들기

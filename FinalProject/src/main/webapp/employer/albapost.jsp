@@ -28,6 +28,7 @@
 		<form method="post" action="<%=POSTTODB%>">
 			<input type="text" name="title" value="">
 			<textarea name="post"></textarea>
+			<input type="number" name="money">
 			<input type="submit" value="submit">
 		</form><%
 	}%>

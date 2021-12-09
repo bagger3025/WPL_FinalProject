@@ -9,14 +9,15 @@ import java.util.ArrayList;
 public class Post {
 	public Post() {}
 	
-	static public boolean doPost(int writer_id, String title, String content) {
+	static public boolean doPost(int writer_id, String title, String content, String money) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO post(writer_key, title, contents) VALUES (?, ?, ?)");
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO post(writer_key, title, contents, money) VALUES (?, ?, ?, ?)");
 			pst.setString(1, Integer.toString(writer_id));
 			pst.setString(2, title);
 			pst.setString(3, content);
+			pst.setString(4,  money);
 			pst.execute();
 			pst.close();
 			return true;
@@ -35,7 +36,7 @@ public class Post {
 			pst.setString(1, Integer.toString(writer_id));
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
-				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"));
+				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"), rs.getInt("money"));
 				ps.add(temp);
 			}
 			pst.close();
@@ -54,7 +55,7 @@ public class Post {
 			PreparedStatement pst = conn.prepareStatement("SELECT * FROM post");
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
-				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"));
+				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"), rs.getInt("money"));
 				ps.add(temp);
 			}
 			pst.close();
@@ -74,7 +75,7 @@ public class Post {
 			pst.setString(1, key);
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
-				ps = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"));
+				ps = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"), rs.getInt("money"));
 			} else {
 				System.out.println("ps is null, couldn't find the post");
 			}

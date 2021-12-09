@@ -14,10 +14,11 @@
 	} else {
 		String title = request.getParameter("title");
 		String post = request.getParameter("post");
+		String money = request.getParameter("money");
 		System.out.println(us);
 		int writer_key = us.key;
 		
-		boolean uploaded = Post.doPost(writer_key, title, post);
+		boolean uploaded = Post.doPost(writer_key, title, post, money);
 		System.out.println("uploaded: " + uploaded);
 		if (uploaded){
 			response.sendRedirect(HOMEPAGE);

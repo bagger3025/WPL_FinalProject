@@ -5,13 +5,13 @@
 %>
 
 <!-- Message from register -->
-<div class="register-success"><%=
-	request.getParameter("register")%>
+<div class="register-success">
+	<%=request.getParameter("register")%>
 </div>
 
 <!-- Message from login, Login error message -->
-<div class="error-message"><%=
-	request.getParameter("error")%>
+<div class="error-message">
+	<%=request.getParameter("error")%>
 </div>
 
 <!-- Login Form -->

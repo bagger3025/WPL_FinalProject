@@ -9,12 +9,12 @@
 </head>
 <body><%
 	/* DEFINE PAGE */
-	String USERVALIDATE = "../employer/employer_piece/uservalidate.jsp";
 	String LOGOUT = "validate/logout.jsp";
 	String POSTPAGE = "employer/albapost.jsp";
 	String SHOWPOST = "../employer/employer_piece/showPosts.jsp";
 
-	int key = ((userStruct)session.getAttribute("user")).key;%>
+	int key = ((userStruct)session.getAttribute("user")).key;
+	%>
 	THIS IS EMPLOYER PAGE
 	<form method="post" action="<%=LOGOUT%>">
 		<button>Log Out</button>

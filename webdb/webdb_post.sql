@@ -28,9 +28,10 @@ CREATE TABLE `post` (
   `title` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `contents` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `finished` tinyint(1) unsigned zerofill NOT NULL DEFAULT '0',
+  `money` int NOT NULL,
   PRIMARY KEY (`key`),
   UNIQUE KEY `key_UNIQUE` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-02  1:13:06
+-- Dump completed on 2021-12-09 22:34:33

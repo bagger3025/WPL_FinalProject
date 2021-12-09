@@ -40,7 +40,7 @@ gubuns: [key, gubun]
 |key|INT|PK,NN,UQ,AI||
 |gubun|String|NN,UQ|["EMPLOYER", "EMPLOYEE"]|
 
-post: [key, writer_key, title, contents, finished]
+post: [key, writer_key, title, contents, finished, money]
 
 |column name|type|attribute|comments|
 |---|---|---|---|
@@ -49,6 +49,7 @@ post: [key, writer_key, title, contents, finished]
 |title|VARCHAR(45)|NN|Charset=utf8|
 |contents|TEXT|NN|Charset=utf8|
 |finished|TINYINT(1)|NN,UN,ZF|Default='0'|
+|money|INT|NN||
 
 TODO: 시급? 월급? 그리고 위치? 등등..
 

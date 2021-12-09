@@ -16,29 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `gubuns`
+-- Table structure for table `contactme`
 --
 
-DROP TABLE IF EXISTS `gubuns`;
+DROP TABLE IF EXISTS `contactme`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gubuns` (
+CREATE TABLE `contactme` (
   `key` int NOT NULL AUTO_INCREMENT,
-  `gubun` varchar(45) NOT NULL,
+  `userkey` int NOT NULL,
+  `title` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `message` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`key`),
   UNIQUE KEY `key_UNIQUE` (`key`),
-  UNIQUE KEY `gubun_UNIQUE` (`gubun`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  KEY `userkey_idx` (`userkey`),
+  CONSTRAINT `userkey` FOREIGN KEY (`userkey`) REFERENCES `users` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gubuns`
+-- Dumping data for table `contactme`
 --
 
-LOCK TABLES `gubuns` WRITE;
-/*!40000 ALTER TABLE `gubuns` DISABLE KEYS */;
-INSERT INTO `gubuns` VALUES (2,'EMPLOYEE'),(1,'EMPLOYER');
-/*!40000 ALTER TABLE `gubuns` ENABLE KEYS */;
+LOCK TABLES `contactme` WRITE;
+/*!40000 ALTER TABLE `contactme` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contactme` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-09 22:34:33
+-- Dump completed on 2021-12-09 22:34:32

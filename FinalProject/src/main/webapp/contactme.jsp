@@ -23,6 +23,7 @@
 		} %>
 	</div>
 	<form method="post" action="validate/uploadcontactme.jsp">
+		<input type="text" name="title">
 		<textarea name="message" rows="5" cols="30"></textarea>
 		<input type="submit" value="submit">
 	</form>

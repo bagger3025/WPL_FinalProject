@@ -7,6 +7,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>HOME PAGE</title>
+<link  rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login.css">
 </head>
 <body><%
 	/* DEFINE PAGE */

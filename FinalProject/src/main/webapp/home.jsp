@@ -24,6 +24,7 @@
 			// gubun must be in [EMPLOYER, EMPLOYEE]
 		}
 	}
+	System.out.println("HOMEPAGE US IS NULL!");
 	String register = (String)session.getAttribute("register");
 	if (register != null){
 		session.removeAttribute("register");

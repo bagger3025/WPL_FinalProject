@@ -10,34 +10,31 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
-<%
-session.removeAttribute("user");
-%>
-<jsp:include page="employee_piece/validateemployee.jsp"></jsp:include>
+<body><%
+	/* USER VALIDATE */
+	userStruct user_session = (userStruct)session.getAttribute("user");
+	if (user_session == null || !user_session.gubun.equals("EMPLOYEE")){
+		response.sendRedirect("../home.jsp");
+	} else {
+		String key = request.getParameter("key");
+		PostStruct ps = Post.getPostFromKey(key);
+		String employeekey = Integer.toString(((userStruct)session.getAttribute("user")).key);
+		if (ps != null){%>
+			<h1><%=ps.title%></h1>
+			<p><%=ps.contents%></p><%
+			boolean applied = Alba.isappliedAlba(key, employeekey);
+			boolean jobFinished = ps.finished == true;
+			if (applied){%>
+				<p>Already Applied!</p> <%
+			} else if (jobFinished){%>
+				<p>Job apply finished</p><%
+			} else {%>
+				<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'">Apply</button><%
+			}
+		} else {%>
+			<p>The key is wrong!</p><%
+		}
 
-<%
-String key = request.getParameter("key");
-PostStruct ps = Post.getPostFromKey(key);
-String employeekey = Integer.toString(((userStruct)session.getAttribute("user")).key);
-if (ps != null){%>
-	<h1><%=ps.title%></h1>
-	<p><%=ps.contents%></p><%
-	boolean applied = Alba.isappliedAlba(key, employeekey);
-	boolean jobFinished = ps.finished == true;
-	if (applied){%>
-		<p>Already Applied!</p> <%
-	} else if (jobFinished){%>
-		<p>Job apply finished</p><%
-	} else {%>
-		<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'">Apply</button><%
 	}%>
-	
-	<%
-} else {%>
-	<p>The key is wrong!</p><%
-}%>
-
-
 </body>
 </html>

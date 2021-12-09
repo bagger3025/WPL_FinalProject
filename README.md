@@ -60,6 +60,14 @@ apply: [key, post_key, user_key]
 |post_key|INT|NN|Foreign Key to post.key|
 |user_key|INT|NN|Foreign Key to users.key|
 
+contactme: [key, userkey, title, message]
+|column name|type|attribute|comments|
+|---|---|---|---|
+|key|INT|PK,NN,UQ,AI||
+|userkey|INT|NN|Foreign Key to users.key|
+|title|VARCHAR(45)|NN|Charset=utf8|
+|message|TEXT|NN|Charset=utf8|
+
 # Other References
 - https://doublesprogramming.tistory.com/58
     - ResultSet에서 자주 사용하는 메서드들
@@ -90,3 +98,4 @@ apply: [key, post_key, user_key]
 - [x] Finish된 job은 apply할 수 없도록 변경
 - [ ] css 적용 (bootstrap?)
 - [ ] contact me 페이지 만들기
+- [ ] 한국어로 작성하면 저장되지 않는 문제

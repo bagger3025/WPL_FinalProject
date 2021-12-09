@@ -13,10 +13,9 @@
 	String LOGOUT = "validate/logout.jsp";
 	String POSTPAGE = "employer/albapost.jsp";
 	String SHOWPOST = "../employer/employer_piece/showPosts.jsp";
-	%>
-	<jsp:include page="<%=USERVALIDATE %>"></jsp:include><%
+
 	int key = ((userStruct)session.getAttribute("user")).key;%>
-THIS IS EMPLOYER PAGE
+	THIS IS EMPLOYER PAGE
 	<form method="post" action="<%=LOGOUT%>">
 		<button>Log Out</button>
 	</form>

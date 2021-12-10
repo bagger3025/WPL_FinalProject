@@ -13,28 +13,34 @@
 
 
 <aside class="login_aside">
-	<!-- Login Form -->
-	<div class="login_guide">
-	Sign in to get a job!
-	</div>
-	<!-- Message from register -->
-	<div class="register-success">
-		<%=request.getParameter("register")%>
-	</div>
-
-	<!-- Message from login, Login error message -->
-	<div class="error-message">
-		<%=request.getParameter("error")%>
-	</div>
 	<form method="post" action="<%=TOVALIDATELOGIN %>">
-		<input type="text" name="username" placeholder="ID"> <br>
-		<input type="password" name="password" placeholder="Password"> <br>
+		<div class="login_guide">
+			ALBAUNIV
+		</div>
+		<div class="form-floating">
+			<input type="text" name="username" placeholder="ID" id="floatingID" class="form-control" required>
+			<label for="floatingID" class="form-label">ID</label>
+		</div>
+		<div class="form-floating">
+			<input type="password" name="password" placeholder="Password" id="floatingPassword" class="form-control" required>
+			<label for="floatingPassword" class="form-label">Password</label>
+		</div>
+		<div class="login-message">
+			<!-- Message from register -->
+			<div class="register-success">
+				<%=request.getParameter("register")%>
+			</div>
+			<!-- Message from login, Login error message -->
+			<div class="error-message">
+				<%=request.getParameter("error")%>
+			</div>
+		</div>
 		<input type="submit" value="SIGN IN" style="margin-top: 5px;">
 	</form>
 	<!-- Register Button -->
-	<div>
-	<button type="button" onclick="location.href='<%=REGISTERPAGE%>'">SIGN UP</button>
-	<div>
-	<%-- <a href="<%=REGISTERPAGE%>">Register</a> --%>
+	<p class="signup-div">
+		<span class="signup-new">Are you new to this site? </span>
+		<a type="button" href='<%=REGISTERPAGE%>' class="signup-text">SIGN UP</a>
+	</p>
 </aside>
 

@@ -30,7 +30,7 @@
 		us = HandleLogin.MatchID(username);
 	}
 	
-	if (us != null){
+	if (us != null || username.equals("")){
 		// already id exists
 		session.setAttribute("register", "ID already exists");
 		response.sendRedirect(REGISTERPAGE);

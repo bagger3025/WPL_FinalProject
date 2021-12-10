@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Alba Posting Page</title>
+<link  rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/albapost.css">
 </head>
 <body><%
 	/* DEFINE PAGE */
@@ -25,12 +27,19 @@
 		}%>
 		
 		<div class="error-message"><%=error%></div>
-		<form method="post" action="<%=POSTTODB%>">
-			<input type="text" name="title" value="">
-			<textarea name="post"></textarea>
-			<input type="number" name="money">
-			<input type="submit" value="submit">
-		</form><%
+		<div class="albapost_wrapper">
+			<div style="text-align: center;">Post ALBA to ALBA Univ </div>
+			<form method="post" action="<%=POSTTODB%>" class="albapost_form">
+				<span> Posting Title </span>
+				<input type="text" name="title" value="">
+				<span> Introduce your Alba</span>
+				<textarea name="post"></textarea>
+				<span> Wage </span>
+				<input type="number" name="money">
+				<input type="submit" value="submit">
+			</form>
+		</div>
+		<%
 	}%>
 </body>
 </html>

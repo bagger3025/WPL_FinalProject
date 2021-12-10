@@ -10,7 +10,7 @@
 <section class="login_main">
 	<span class=login_main_info>
 	Job is <br>
-	<span style="font-size: 80px;">EVERYWHERE!</span>
+	<span style="font-size: 80px; margin-bottom: 10px;">EVERYWHERE!</span>
 	</span>
 </section>
 

@@ -22,7 +22,7 @@ html {
     float: right;
     height: 100%;
     width: 20%;
-    background-color: green;
+    background-color: #0984e3;
 }
 
 .login_aside * {
@@ -41,6 +41,8 @@ html {
     font-size: 20px;
     background-color: gold;
     color: green;
+    border: solid;
+    border-color: #7f6b00;
     border-radius: 5px;
 }
 

@@ -88,7 +88,7 @@ contactme: [key, userkey, title, message]
     - posting Insert에 대한 설명
 
 # TODO List
-- [ ] 회원가입 시 더 많은 input 점검이 필요
+- [x] 회원가입 시 더 많은 input 점검이 필요 (password validate만 더 해주면 됨)
 - [x] post 불러오는 것이 0개일 때도 되는지 점검 필요
 - [x] employee에서 pagination 점검
 - [x] finished인 job은 employee나 employer에서 띄워줄 때 따로 구별 필요
@@ -100,3 +100,8 @@ contactme: [key, userkey, title, message]
 - [ ] css 적용 (bootstrap?)
 - [x] contact me 페이지 만들기
 - [ ] 한국어로 작성하면 저장되지 않는 문제
+- [ ] password validate 추가해야함
+- [ ] register page에서 오류가 났을 때 표시해주는 장치가 있어야 함
+- [ ] id 검사하는 장치가 필요
+- [ ] register page에서 실시간 검사
+- [ ] login page에서 알람 표시 및 간격 조절

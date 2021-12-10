@@ -22,7 +22,7 @@ html {
     float: right;
     height: 100%;
     width: 20%;
-    background-color: #0984e3;
+    background-color: #dcf1ff;
 }
 
 .login_aside * {
@@ -32,22 +32,72 @@ html {
 }
 
 .login_aside input{
-    font-size: 20px;
     margin-top: 0px;
     border-radius: 5px;
 }
 
 .login_aside input[type=submit], .login_aside button{
     font-size: 20px;
-    background-color: gold;
-    color: green;
-    border: solid;
-    border-color: #7f6b00;
-    border-radius: 5px;
+    height: 40px;
+    background-color: #0984e3;
+    color: #ecf0f1;
+    border:none;
 }
 
 .login_guide{
     font-size: 30px;
-    color: white;
+    font-weight: 900;
+    text-align: center;
+    color: #0984e3;
+    letter-spacing: 15px;
 }
 
+.form-floating{
+    padding: 0;
+}
+
+.form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[id="floatingID"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0;
+}
+
+.form-signin input[id="floatingPassword"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0;
+}
+
+.login-message{
+    height: 30px;
+}
+
+.signup-div{
+    text-align: center;
+}
+
+.signup-new{
+    color: #636e72;
+    padding: 0;
+    margin: 0;
+}
+
+.signup-text{
+    font-weight: 600;
+    color: #0984e3;
+    text-decoration: none;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.signup-text:hover{
+    font-weight: 600;
+    text-decoration: none;
+}

@@ -11,7 +11,7 @@ body{
 }
 
 .signin_wrapper{
-    padding-top: 10%;
+    padding-top: 7%;
     height: 100%;
     background-color: #dcf1ff;
     width: 40%;
@@ -90,6 +90,7 @@ body{
 input{
     border: 1px solid #b2bec3;
     border-radius: 3px;
+    outline: none;
 }
 
 input:focus-visible{
@@ -106,6 +107,7 @@ input:focus-visible{
 .wrongalarm,
 .validalarm{
     margin-left: -70px;
+    display: none;
 }
 
 .wronginput{

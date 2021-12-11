@@ -1,0 +1,51 @@
+.post_wrapper{
+    width: 50%;
+    margin-left: 20%;
+    margin-right: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post_wrapper ul li{
+    list-style: none;
+}
+
+.post_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+.post_wage_value{
+    font-weight: bold;
+    color: #0984e3;
+}
+
+.post_title{
+    font-weight: bold;
+    font-size: 50px;
+    color: #0984e3;
+}
+
+.post_wage{
+    font-size: 20px;
+}
+
+.post_content{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.post_list{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.apply_list{
+    font-size: 20px;
+    font-weight: normal;
+}

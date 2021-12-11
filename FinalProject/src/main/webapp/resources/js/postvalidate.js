@@ -1,5 +1,5 @@
 function init() {
-    $(".postButton").click((e) => {
+    $(".userbutton").click((e) => {
         const postingTitle = $("#postingTitle").val();
         if (postingTitle.length === 0) {
             alert("Please enter title");
@@ -33,3 +33,4 @@ function init() {
 }
 
 init();
+console.log("WHy nunu WHy?");

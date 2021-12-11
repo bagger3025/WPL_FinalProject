@@ -14,7 +14,6 @@
 	String VIEWPOST = "../employerviewpost.jsp";
 
 	String key = request.getParameter("key");
-	System.out.println("key is " + key);
 	Post.FinishPost(key);
 	response.sendRedirect(VIEWPOST+"?key="+key);
 %>

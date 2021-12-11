@@ -1,0 +1,87 @@
+@charset "EUC-KR";
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+.albauniv{
+	font-size: 40px;
+	font-weight: 900;
+	color: #0984e3;
+	letter-spacing: -2px;
+}
+
+.employ_welcome{
+	font-size: 20px;
+}
+
+.employ_welcome .id_bold{
+	font-weight: bold;
+}
+
+.top-menu{
+	font-size: 20px;
+}
+
+.userbutton{
+	font-size: 20px;
+    height: 45px;
+    background-color: #0984e3;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    padding: 0px 25px;
+}
+
+.top-text{
+	text-align: center;
+	font-size: 25px;
+	padding: 30px 0px;
+	font-weight: bold;
+}
+
+.table{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.table .job-title{
+	text-align: start;
+	font-size: 18px;
+}
+
+.job-title a{
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.job-title a:hover{
+	color: black;
+	text-decoration: underline;
+}
+
+.employ_page_number{
+	display: flex;
+	flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.display-page{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.pagebutton{
+	border: 1px solid #0c2461;
+	background-color: white;
+	color: #0c2461;
+	font-size: 15px;
+	padding: 0px 10px;
+	height: 40px;
+	font-weight: bold;
+	border-radius: 3px;
+}

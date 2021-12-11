@@ -1,0 +1,78 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    background-color: #ddbea9;
+}
+
+body{
+    padding-top: 10%;
+}
+
+.employer_wrapper{
+    
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.employer_header{
+    padding-top: 2%;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #a5a58d;
+    border-radius: 5px;
+}
+
+.employer_welcome{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.employer_post_button{
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer_post_button button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer_post_list{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer_post_list ul{
+    list-style: none;
+}
+
+.employer_post{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid;
+    border-width: 2px;
+    border-color: lightgray;
+}
+
+.employer_page_number{
+    margin-left: auto;
+}
+
+.employer_contactme{
+    width: 100%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

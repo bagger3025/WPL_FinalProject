@@ -1,21 +1,27 @@
 function init() {
-    $("#userid").click(() => {
-        console.log("userid was clicked!");
-    });
     $(".signin_submit").click((e) => {
         let validated = true;
         // Validate user id
         console.log("userid: ", $("#userid").val());
-        const userid = $("#userid").val();
-        if (userid.length === 0) {
+        const userid = $("#userid").prop("disabled");
+        if (userid === false) {
             e.preventDefault();
             e.stopPropagation();
+            alert("Validate your ID!");
             validated = false;
+            return;
         }
 
         // Validate user password
         console.log("password: ", $("#userpassword").val());
         const password = $("#userpassword").val();
+        if (password.length === 0){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("Check your password!");
+            validated = false;
+            return;
+        }
 
         // Validate user password again
         console.log("validatepassword: ", $("#uservalpassword").val());
@@ -23,7 +29,9 @@ function init() {
         if (password !== password_val) {
             e.preventDefault();
             e.stopPropagation();
+            alert("Check your confirm-password!");
             validated = false;
+            return;
         }
 
         // Validate user first name
@@ -33,7 +41,9 @@ function init() {
         if (!re_name.test(userFirstName)) {
             e.preventDefault();
             e.stopPropagation();
+            alert("Check your firstname!");
             validated = false;
+            return;
         }
 
         // Validate user Last name
@@ -42,7 +52,9 @@ function init() {
         if (!re_name.test(userLastName)) {
             e.preventDefault();
             e.stopPropagation();
+            alert("Check your lastname!");
             validated = false;
+            return;
         }
 
         /* how to get values from radio inputs: https://loomio.tistory.com/28 */
@@ -51,16 +63,17 @@ function init() {
         if (gubun === undefined) {
             e.preventDefault();
             e.stopPropagation();
+            alert("Check your type!");
             validated = false;
+            return;
         }
-
         if (validated) {
+            $("#userid").prop("disabled", false);
             console.log("SUCCESSED");
         } else {
             console.log("FAILED");
         }
     });
-    console.log("HELLO!!");
 }
 
 function validate_inputs(){
@@ -155,6 +168,30 @@ function validate_inputs(){
         $("#registeras_inputfield .validalarm").css("display", "block");
     }
 }
+
+$("#id_valid_button").click((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if($("#userid").val().trim() === ""){
+        alert("Id is empty!");
+        return;
+    }
+    $.ajax({
+        url: 'validate/validateID.jsp',
+        type: 'post',
+        data: { "id" : $("#userid").val() },
+        success:function(rs){
+            rs = rs.trim();
+            console.log(rs);
+            if(rs === "true"){
+                $("#userid").prop("disabled", true);
+                $("#id_valid_button").prop("disabled", true);
+            }else{
+                alert("ID already exists! Please select other Id.");
+            }
+        }
+    });
+});
 
 init();
 $("#userid").on("input", validate_inputs);

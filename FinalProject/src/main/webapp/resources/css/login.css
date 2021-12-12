@@ -101,3 +101,13 @@ html {
     font-weight: 600;
     text-decoration: none;
 }
+
+.register-success{
+    margin-bottom: 10px;
+    color: #0984e3;
+}
+
+.error-message{
+    margin-bottom: 10px;
+    color: red;
+}

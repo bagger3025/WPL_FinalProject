@@ -11,6 +11,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
+
 </head>
 <body><%
 	/* DEFINE PAGE */
@@ -39,19 +41,31 @@
 		</div><%
 		String key = request.getParameter("key");
 		PostStruct ps = Post.getPostFromKey(key);
+		System.out.println(ps.contents);
+		String[] lines = ps.contents.split("\n");
 		String employeekey = Integer.toString(((userStruct)session.getAttribute("user")).key);
 		if (ps != null){%>
-			<h1><%=ps.title%></h1>
-			<p><%=ps.contents%></p><%
+			<div class="post_wrapper">
+				<div class="post_header"> 	
+					<h1 class="post_title"><%=ps.title%></h1>  
+					<div class="post_wage"><span> Offered Wage </span> <span class="post_wage_value"> <%=ps.money%> </span></div>
+				</div>
+				<div class="post_content">
+					<%for(int i = 0; i < lines.length; i++){
+						%><%=lines[i]%><%if(i == lines.length - 1){break;} %><br/><%
+					}%>
+				</div>
+			<%
 			boolean applied = Alba.isappliedAlba(key, employeekey);
 			boolean jobFinished = ps.finished == true;
 			if (applied){%>
-				<p>Already Applied!</p> <%
+				<button type="button" class="userbutton_gray">Already Applied!</button><%
 			} else if (jobFinished){%>
-				<p>Job apply finished</p><%
+				<button type="button" class="userbutton_gray">Job apply finished</button><%
 			} else {%>
-				<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'">Apply</button><%
-			}
+				<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'" class="userbutton">Apply</button><%
+			}%>
+			</div> <%
 		} else {%>
 			<p>The key is wrong!</p><%
 		}

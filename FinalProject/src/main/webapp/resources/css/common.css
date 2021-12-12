@@ -34,6 +34,18 @@ html, body{
     padding: 0px 25px;
 }
 
+.userbutton_gray{
+	font-size: 20px;
+    height: 45px;
+    background-color: lightgray;
+	pointer-events: none;
+    color: gray;
+    border:none;
+    border-radius: 5px;
+    padding: 0px 25px;
+}
+
+
 .top-text{
 	text-align: center;
 	font-size: 25px;

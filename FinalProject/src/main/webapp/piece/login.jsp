@@ -27,13 +27,25 @@
 		</div>
 		<div class="login-message">
 			<!-- Message from register -->
-			<div class="register-success">
-				<%=request.getParameter("register")%>
-			</div>
+			<%
+				if(!request.getParameter("register").equals("")){
+					%>
+					<div class="register-success">
+						<%=request.getParameter("register")%>
+					</div>
+					<%
+				}
+			%>
 			<!-- Message from login, Login error message -->
-			<div class="error-message">
-				<%=request.getParameter("error")%>
-			</div>
+			<%
+				if(!request.getParameter("error").equals("")){
+					%>
+					<div class="error-message">
+						<%=request.getParameter("error")%>
+					</div>
+					<%
+				}
+			%>
 		</div>
 		<input type="submit" value="SIGN IN" style="margin-top: 5px;">
 	</form>

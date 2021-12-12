@@ -9,9 +9,10 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Posting Page</title>
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
 </head>
 <body><%
 	/* DEFINE PAGE */
@@ -32,7 +33,7 @@
 					<span class="employ_welcome"> Welcome! <span class="id_bold"><%=user_session.user_id%></span> </span>
 				</div>
 				<ul class="nav justify-content-center col-md-auto mb-md-0 top-menu">
-					<li><a href="<%=HOMEPAGE %>" class="nav-link px-2 link-secondary">Home</a></li>
+					<li><a href="<%=HOMEPAGE %>" class="nav-link px-2 link-dark">Home</a></li>
 					<li><a href="<%=POSTPAGE %>" class="nav-link px-2 link-dark">Post</a></li>
 					<li><a href="<%=CONTACTUS %>" class="nav-link px-2 link-dark">Contact us</a></li>
 				</ul>
@@ -46,22 +47,57 @@
 		System.out.println(ps.contents);
 		String[] lines = ps.contents.split("\n");
 		if (ps != null){%>
-			<h1><%=ps.title%></h1>
-			<p><%for(int i = 0; i < lines.length; i++){
-				%><%=lines[i]%><%if(i == lines.length - 1){break;} %><br/><%
-			}%></p>
-			<p>Apply List</p>
-			<ul class="apply-list"><%
+			<div class="post_wrapper">
+				<div class="post_header"> 	
+					<h1 class="post_title"><%=ps.title%></h1>  
+					<div class="post_wage"><span> Offered Wage </span> <span class="post_wage_value"> <%=ps.money%> </span></div>
+				</div>
+				<div class="post_content">
+					<%for(int i = 0; i < lines.length; i++){
+						%><%=lines[i]%><%if(i == lines.length - 1){break;} %><br/><%
+					}%>
+				</div> <hr>
+				<% 
 				ArrayList<userStruct> us = Alba.getapplyList(key);
-				for(int i = 0; i < us.size(); i++){%>
-					<li><%=us.get(i).key %> - <%=us.get(i).last_name %>(<%=us.get(i).user_id %>)</li><%
-				}%>
-			</ul><%
-			if (ps.finished){%>
-				<div>This alba is finished</div><%
-			} else {%>
-				<button type="button" onclick="location.href='<%=FINISHPOST%>?key=<%=key%>'">Mark as finished</button><%	
-			}
+				System.out.println(us.size());
+				if(us.size() == 0){
+					%>
+					<div class="post_list"> No-one has applied to this job. </div>
+					<%
+				}
+				else{
+					%>
+					<div class="post_list">
+					<%
+					if(us.size() == 1){
+						%>
+						<p><span style="color: red;"><%=us.size()%> </span> person has applied to this job. </p>
+						<%
+					}
+					else{
+						%>
+						<p><span style="color: red;"><%=us.size()%> </span> people have applied to this job. </p>
+						<%
+					}
+					%>
+						<ul class="apply_list">
+						<%
+						for(int i = 0; i < us.size(); i++){%>
+							<li><%=us.get(i).key %> - <%=us.get(i).user_id %></li><%
+						}
+						%>
+						</ul>
+					</div>
+					<%
+				}
+				if (ps.finished){%>
+					<button type="button" class="userbutton_gray">This alba is finished</button><%	
+				} else {%>
+					<button type="button" onclick="location.href='<%=FINISHPOST%>?key=<%=key%>'" class="userbutton">Mark as finished</button><%	
+				}
+				%>
+			</div>
+			<%
 		} else {%>
 			<p>The key is wrong!</p><%
 		}

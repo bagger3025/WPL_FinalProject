@@ -14,9 +14,8 @@
 <body><%
 	/* DEFINE PAGE */
 	String HOMEPAGE = "../home.jsp";
-	String CONTACTUS = "contactus.jsp";
 	String ALBAPOST = "albapost.jsp";
-	String USERVALIDATE = "employer_piece/uservalidate.jsp";
+	String CONTACTUS = "contactus.jsp";
 	String POSTTODB = "process/uploadpost.jsp";
 	
 	/* USER VALIDATE */
@@ -24,6 +23,7 @@
 	if (user_session == null || !user_session.gubun.equals("EMPLOYER")){
 		response.sendRedirect("../home.jsp");
 	} else {%>
+		<!-- Header from bootstrap -->
 		<div class="container">
 			<header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
 				<div class="col-md-4">
@@ -41,7 +41,7 @@
 			</header>
 		</div>
 		<div class="container">
-			<div class="top-text">Post ALBA to ALBA Univ </div>
+			<div class="top-text">Post ALBA to ALBAUNIV </div>
 			<form method="post" action="<%=POSTTODB%>" class="albapost_form">
 				<div class="mb-3">
 				    <label for="postingTitle" class="form-label">Posting Title</label>
@@ -57,8 +57,7 @@
 				</div>
 				<input type="submit" value="submit" class="userbutton" id="submitbutton">
 			</form>
-		</div>
-		<%
+		</div><%
 	}%>
 	<script src="../resources/js/postvalidate.js"></script>
 </body>

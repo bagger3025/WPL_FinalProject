@@ -24,6 +24,7 @@
 	if (user_session == null || !user_session.gubun.equals("EMPLOYEE")){
 		response.sendRedirect(HOMEPAGE);
 	} else {%>
+		<!-- header, example from bootstrap -->
 		<div class="container">
 			<header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
 				<div class="col-md-5">
@@ -41,35 +42,36 @@
 		</div><%
 		String key = request.getParameter("key");
 		PostStruct ps = Post.getPostFromKey(key);
-		System.out.println(ps.contents);
 		String[] lines = ps.contents.split("\n");
-		String employeekey = Integer.toString(((userStruct)session.getAttribute("user")).key);
+		String employeekey = Integer.toString(user_session.key);
 		if (ps != null){%>
 			<div class="post_wrapper">
 				<div class="post_header"> 	
 					<h1 class="post_title"><%=ps.title%></h1>  
 					<div class="post_wage"><span> Offered Wage </span> <span class="post_wage_value"> <%=ps.money%> </span></div>
 				</div>
-				<div class="post_content">
-					<%for(int i = 0; i < lines.length; i++){
-						%><%=lines[i]%><%if(i == lines.length - 1){break;} %><br/><%
+				<div class="post_content"><%
+					for(int i = 0; i < lines.length; i++){%>
+						<%=lines[i]%><%
+						if(i == lines.length - 1){
+							break;
+						}%>
+						<br/><%
 					}%>
-				</div>
-			<%
-			boolean applied = Alba.isappliedAlba(key, employeekey);
-			boolean jobFinished = ps.finished == true;
-			if (applied){%>
-				<button type="button" class="userbutton_gray">Already Applied!</button><%
-			} else if (jobFinished){%>
-				<button type="button" class="userbutton_gray">Job apply finished</button><%
-			} else {%>
-				<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'" class="userbutton">Apply</button><%
-			}%>
-			</div> <%
-		} else {%>
+				</div><%
+				boolean applied = Alba.isappliedAlba(key, employeekey);
+				if (applied){%>
+					<button type="button" class="userbutton_gray">Already Applied!</button><%
+				} else if (ps.finished){%>
+					<button type="button" class="userbutton_gray">Job apply finished</button><%
+				} else {%>
+					<button type="button" onclick="location.href='process/applyjob.jsp?key=<%=key%>'" class="userbutton">Apply</button><%
+				}%>
+			</div><%
+		} else { %>
+			<!-- Error -->
 			<p>The key is wrong!</p><%
 		}
-
 	}%>
 </body>
 </html>

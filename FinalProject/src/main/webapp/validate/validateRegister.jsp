@@ -2,13 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="Login.*" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body><%
+<%
 	/* DEFINE PAGE */
 	String HOMEPAGE = "../home.jsp";
 	String REGISTERPAGE = "../register.jsp";
@@ -21,22 +15,8 @@
 	String FirstName = request.getParameter("first_name");
 	String LastName = request.getParameter("last_name");
 	String gubun = request.getParameter("gubun");
-	userStruct us;
-	
-	if (username.equals("")){
-		us = null;
-	} else {
-		us = HandleLogin.MatchID(username);
-	}
-	
-	if (us != null || username.equals("")){
-		// already id exists
-		session.setAttribute("register", "ID already exists");
-		response.sendRedirect(REGISTERPAGE);
-	} else {
-		HandleLogin.Register(username, password, FirstName, LastName, gubun);
-		session.setAttribute("register", "Register was done successfully");
-		response.sendRedirect(HOMEPAGE);
-	}%>
-</body>
-</html>
+
+	HandleLogin.Register(username, password, FirstName, LastName, gubun);
+	session.setAttribute("register", "Register was done successfully");
+	response.sendRedirect(HOMEPAGE);
+%>

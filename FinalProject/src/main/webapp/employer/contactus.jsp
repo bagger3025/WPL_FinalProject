@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Alba Posting Page</title>
-<link  rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/poststyle.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<meta charset="EUC-KR">
+	<title>Contact us</title>
+	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/poststyle.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body><%
 	/* DEFINE PAGE */
@@ -21,7 +21,7 @@
 	/* USER VALIDATE */
 	userStruct user_session = (userStruct)session.getAttribute("user");
 	if (user_session == null || !user_session.gubun.equals("EMPLOYER")){
-		response.sendRedirect("../home.jsp");
+		response.sendRedirect(HOMEPAGE);
 	} else {%>
 		<div class="container">
 			<header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -33,7 +33,6 @@
 					<li><a href="<%=HOMEPAGE %>" class="nav-link px-2 link-dark">Home</a></li>
 					<li><a href="<%=ALBAPOST %>" class="nav-link px-2 link-dark">Post</a></li>
 					<li><a href="<%=CONTACTUS %>" class="nav-link px-2 link-secondary">Contact us</a></li>
-					
 				</ul>
 				<div class="text-end col-md-4">
 					<button type="button" class="userbutton" onclick="location.href='../validate/logout.jsp'" >Logout</button>
@@ -55,8 +54,7 @@
 				</div>
 				<input type="submit" value="submit" class="userbutton">
 			</form>
-		</div>
-		<%
+		</div><%
 	}%>
 </body>
 </html>

@@ -15,15 +15,11 @@
 		String title = request.getParameter("title");
 		String post = request.getParameter("post");
 		String money = request.getParameter("money");
-		System.out.println(us);
-		int writer_key = us.key;
 		
-		boolean uploaded = Post.doPost(writer_key, title, post, money);
-		System.out.println("uploaded: " + uploaded);
+		boolean uploaded = Post.doPost(us.key, title, post, money);
 		if (uploaded){
 			response.sendRedirect(HOMEPAGE);
 		} else {
-			session.setAttribute("error", "Couldn't upload the post");
 			response.sendRedirect(ALBAPOST);
 		}
 	}%>

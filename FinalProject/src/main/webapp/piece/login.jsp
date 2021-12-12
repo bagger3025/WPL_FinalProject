@@ -17,6 +17,7 @@
 		<div class="login_guide">
 			ALBAUNIV
 		</div>
+		<!-- Login form by bootstrap Example https://getbootstrap.com/docs/5.1/examples/sign-in/ -->
 		<div class="form-floating">
 			<input type="text" name="username" placeholder="ID" id="floatingID" class="form-control" required>
 			<label for="floatingID" class="form-label">ID</label>
@@ -25,27 +26,19 @@
 			<input type="password" name="password" placeholder="Password" id="floatingPassword" class="form-control" required>
 			<label for="floatingPassword" class="form-label">Password</label>
 		</div>
-		<div class="login-message">
-			<!-- Message from register -->
-			<%
-				if(!request.getParameter("register").equals("")){
-					%>
-					<div class="register-success">
-						<%=request.getParameter("register")%>
-					</div>
-					<%
-				}
-			%>
-			<!-- Message from login, Login error message -->
-			<%
-				if(!request.getParameter("error").equals("")){
-					%>
-					<div class="error-message">
-						<%=request.getParameter("error")%>
-					</div>
-					<%
-				}
-			%>
+		<div class="login-message"><%
+			if(!request.getParameter("register").equals("")){%>
+				<div class="register-success">
+					<!-- Message from register -->
+					<%=request.getParameter("register")%>
+				</div><%
+			}
+			if(!request.getParameter("error").equals("")){%>
+				<div class="error-message">
+					<!-- Message from login, Login error message -->
+					<%=request.getParameter("error")%>
+				</div><%
+			}%>
 		</div>
 		<input type="submit" value="SIGN IN" style="margin-top: 5px;">
 	</form>

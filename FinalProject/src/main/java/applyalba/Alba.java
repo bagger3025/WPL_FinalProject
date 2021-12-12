@@ -11,13 +11,15 @@ import Login.userStruct;
 import post.PostStruct;
 
 public class Alba {
-	public Alba() {}
-	
+	public Alba() {
+	}
+
 	static public boolean isappliedAlba(String postkey, String employeekey) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
-			PreparedStatement pst = conn.prepareStatement("SELECT * FROM apply WHERE apply.post_key=? and apply.user_key=?");
+			PreparedStatement pst = conn
+					.prepareStatement("SELECT * FROM apply WHERE apply.post_key=? and apply.user_key=?");
 			pst.setString(1, postkey);
 			pst.setString(2, employeekey);
 			ResultSet rs = pst.executeQuery();
@@ -33,7 +35,7 @@ public class Alba {
 		}
 		return false;
 	}
-	
+
 	static public boolean applyAlba(String postkey, String employeekey) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -49,8 +51,8 @@ public class Alba {
 		}
 		return false;
 	}
-	
-	static public ArrayList<userStruct> getapplyList(String postkey){
+
+	static public ArrayList<userStruct> getapplyList(String postkey) {
 		try {
 			ArrayList<userStruct> ps = new ArrayList<userStruct>();
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -58,10 +60,9 @@ public class Alba {
 			PreparedStatement pst = conn.prepareStatement("SELECT * FROM apply WHERE apply.post_key=?");
 			pst.setString(1, postkey);
 			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				userStruct us_temp = HandleLogin.MatchKey(Integer.toString(rs.getInt("user_key")));
 				if (us_temp == null) {
-					System.out.println("ERROR, No user exists");
 					return new ArrayList<userStruct>();
 				}
 				ps.add(us_temp);

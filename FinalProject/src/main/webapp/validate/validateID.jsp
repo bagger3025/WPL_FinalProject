@@ -1,21 +1,16 @@
 <%@ page import="Login.*" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
     userStruct us;
     String userID = request.getParameter("id");
-    System.out.println(userID);
     if (userID.equals("")){
-		us = null;
+    	// If input userID is null, it fails
         out.print("false");
 	} else {
 		us = HandleLogin.MatchID(userID);
-        if (us == null){
-            out.print("true");
-        }
-        else{
-            out.print("false");
-        }
+		// If input userID doesn't exist in db, it succeeds
+		// If input userID exists in db, it fails
+		out.print(us == null ? "true" : "false");
 	}
 %>

@@ -32,9 +32,9 @@
 	} else {
 		register = "";
 	}
-	String errorMessage = (String)session.getAttribute("error");
+	String errorMessage = (String)session.getAttribute("login-error");
 	if (errorMessage != null){
-		session.removeAttribute("error");
+		session.removeAttribute("login-error");
 	} else {
 		errorMessage = "";
 	}%>

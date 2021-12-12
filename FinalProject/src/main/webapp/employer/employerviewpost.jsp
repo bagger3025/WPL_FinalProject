@@ -8,11 +8,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Posting Page</title>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
+	<meta charset="EUC-KR">
+	<title>ALBAUNIV Post</title>
+	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
 </head>
 <body><%
 	/* DEFINE PAGE */
@@ -44,7 +44,6 @@
 		</div><%
 		String key = request.getParameter("key");
 		PostStruct ps = Post.getPostFromKey(key);
-		System.out.println(ps.contents);
 		String[] lines = ps.contents.split("\n");
 		if (ps != null){%>
 			<div class="post_wrapper">
@@ -52,52 +51,39 @@
 					<h1 class="post_title"><%=ps.title%></h1>  
 					<div class="post_wage"><span> Offered Wage </span> <span class="post_wage_value"> <%=ps.money%> </span></div>
 				</div>
-				<div class="post_content">
-					<%for(int i = 0; i < lines.length; i++){
-						%><%=lines[i]%><%if(i == lines.length - 1){break;} %><br/><%
+				<div class="post_content"><%
+					for(int i = 0; i < lines.length; i++){%>
+						<%=lines[i]%><%
+						if(i == lines.length - 1){
+							break;
+						}%>
+						<br/><%
 					}%>
-				</div> <hr>
-				<% 
+				</div>
+				<hr><% 
 				ArrayList<userStruct> us = Alba.getapplyList(key);
-				System.out.println(us.size());
-				if(us.size() == 0){
-					%>
-					<div class="post_list"> No-one has applied to this job. </div>
-					<%
-				}
-				else{
-					%>
-					<div class="post_list">
-					<%
-					if(us.size() == 1){
-						%>
-						<p><span style="color: red;"><%=us.size()%> </span> person has applied to this job. </p>
-						<%
-					}
-					else{
-						%>
-						<p><span style="color: red;"><%=us.size()%> </span> people have applied to this job. </p>
-						<%
-					}
-					%>
-						<ul class="apply_list">
-						<%
-						for(int i = 0; i < us.size(); i++){%>
-							<li><%=us.get(i).key %> - <%=us.get(i).user_id %></li><%
-						}
-						%>
+				if(us.size() == 0){%>
+					<div class="post_list"> No-one has applied to this job. </div><%
+				} else {%>
+					<div class="post_list"><%
+						if(us.size() == 1){%>
+							<p><span style="color: red;"><%=us.size()%> </span> person has applied to this job. </p><%
+						} else {%>
+							<p><span style="color: red;"><%=us.size()%> </span> people have applied to this job. </p><%
+						}%>
+						<ul class="apply_list"><%
+							for(int i = 0; i < us.size(); i++){%>
+								<li><%=us.get(i).key %> - <%=us.get(i).user_id %></li><%
+							}%>
 						</ul>
-					</div>
-					<%
+					</div><%
 				}
 				if (ps.finished){%>
 					<button type="button" class="userbutton_gray">This alba is finished</button><%	
 				} else {%>
 					<button type="button" onclick="location.href='<%=FINISHPOST%>?key=<%=key%>'" class="userbutton">Mark as finished</button><%	
-				}
-				%>
-			</div>
-			<%
+				}%>
+			</div><%
 		} else {%>
 			<p>The key is wrong!</p><%
 		}

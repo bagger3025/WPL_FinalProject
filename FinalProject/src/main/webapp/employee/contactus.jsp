@@ -25,7 +25,7 @@
 		<div class="container">
 			<header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
 				<div class="col-md-5">
-					<span class="albauniv"><a href="/home" class="text-decoration-none">ALBAUNIV</a></span>
+					<span class="albauniv"><a href="<%=HOMEPAGE %>" class="text-decoration-none">ALBAUNIV</a></span>
 					<span class="employ_welcome"> Welcome! <span class="id_bold"><%=user_session.user_id%></span></span>
 				</div>
 				<ul class="nav justify-content-center col-md-auto mb-md-0 top-menu">

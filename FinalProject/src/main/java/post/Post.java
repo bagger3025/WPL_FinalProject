@@ -64,6 +64,25 @@ public class Post {
 		}
 		return new ArrayList<PostStruct>();
 	}
+	
+	static public ArrayList<PostStruct> getUnfinished(){
+		ArrayList<PostStruct> ps = new ArrayList<PostStruct>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/WebDB?user=root&password=root!");
+			PreparedStatement pst = conn.prepareStatement("SELECT * FROM post WHERE post.finished=0");
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				PostStruct temp = new PostStruct(rs.getInt("key"), rs.getInt("writer_key"), rs.getString("title"), rs.getString("contents"), rs.getBoolean("finished"), rs.getInt("money"));
+				ps.add(temp);
+			}
+			pst.close();
+			return ps;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<PostStruct>();
+	}
 
 	static public PostStruct getPostFromKey(String key) {
 		PostStruct ps = null;

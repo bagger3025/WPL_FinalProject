@@ -55,7 +55,7 @@
 				    <label for="postingMoney" class="form-label">Wage</label>
 				    <input type="number" class="textform" id="postingMoney" placeholder="" name="money" required>
 				</div>
-				<input type="submit" value="submit" class="userbutton">
+				<input type="submit" value="submit" class="userbutton" id="submitbutton">
 			</form>
 		</div>
 		<%

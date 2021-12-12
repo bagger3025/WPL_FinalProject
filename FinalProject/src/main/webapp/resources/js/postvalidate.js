@@ -1,5 +1,5 @@
 function init() {
-    $(".userbutton").click((e) => {
+    $("#submitbutton").click((e) => {
         const postingTitle = $("#postingTitle").val();
         if (postingTitle.length === 0) {
             alert("Please enter title");

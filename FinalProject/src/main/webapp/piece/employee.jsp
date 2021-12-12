@@ -19,14 +19,20 @@
 	String HOMEPAGE = "home.jsp";
 	String CONTACTUS = "employee/contactus.jsp";
 
-
 	int jobsperpage = 10;
 	String pagination = request.getParameter("p");
 	if (pagination == null){
 		pagination = "0";	
 	}
 	int pageNum = Integer.parseInt(pagination);
-	ArrayList<PostStruct> ps = Post.getPostAll();
+	String hide = request.getParameter("hidefinished");
+	boolean hide_finished = (hide != null && hide.equals("true")) ? true : false;
+	ArrayList<PostStruct> ps;
+	if (hide_finished){
+		ps = Post.getUnfinished();
+	} else {
+		ps = Post.getPostAll();
+	}
 	userStruct us = (userStruct)session.getAttribute("user");
 	%>
 	<div class="container">
@@ -49,6 +55,15 @@
 	<%} else {%>
 		<div class="container">
 			<div class="top-text"> There <%=(ps.size() == 1) ? "is" : "are" %> <span style="color: red;"><%=ps.size()%></span> job<%= (ps.size() == 1) ? "" : "s" %> looking for you </div>
+			<% if (hide_finished) {%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div>
+			<%
+			} else {
+			%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div>
+			<%
+			
+			}%>
 			<table class="table table-hover align-middle">
 				<colgroup>
 					<col width="100px"/>
@@ -87,14 +102,14 @@
 					int nextpage = pageNum + 1;
 					int prevpage = pageNum - 1;
 					if(prevpage >= 0){%>
-						<button type="button" class="pagebutton" onclick="location.href='home.jsp?p=<%=prevpage%>'">Previous Page</button><%
+						<button type="button" class="pagebutton" onclick="location.href='home.jsp?p=<%=prevpage%>&hidefinished=<%=hide_finished%>'">Previous Page</button><%
 					}%>
 				</div>
 				<span class="cd-md-auto display-page"><%= pageNum + 1 %>/<%=maxPage + 1 %></span>
 				<div class="text-end col-md-3"><%
 					if(nextpage <= maxPage){
 						%>
-						<button type="button" class="pagebutton" onclick="location.href='home.jsp?p=<%=nextpage%>'">Next Page</button><%
+						<button type="button" class="pagebutton" onclick="location.href='home.jsp?p=<%=nextpage%>&hidefinished=<%=hide_finished%>'">Next Page</button><%
 					}%>
 				</div>
 			</div>

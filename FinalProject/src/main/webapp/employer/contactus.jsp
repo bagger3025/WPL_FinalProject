@@ -52,7 +52,7 @@
 				    <label for="postingContent" class="form-label">Message</label>
 			    	<textarea class="textform" id="postingContent" rows="10" name="message" required></textarea>
 				</div>
-				<input type="submit" value="submit" class="userbutton">
+				<input type="submit" value="submit" class="userbutton" id="contactusbutton">
 			</form>
 		</div><%
 	}%>

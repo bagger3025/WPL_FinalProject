@@ -43,7 +43,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'bagger','abcd','bag','ger',1),(2,'afa','afa','TT','WW',2);
+INSERT INTO `users` VALUES (1,'Personio','personio','Personio','Personio',1),(2,'Evotec','evotec','Evotec','Evotec',1),(3,'DeepfieldNetworks','deepfieldnetworks','DeepfieldNetworks','DeepfieldNetworks',1),(4,'developer','developer','Developer','Developer',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-09 22:34:33
+-- Dump completed on 2021-12-12 22:24:08

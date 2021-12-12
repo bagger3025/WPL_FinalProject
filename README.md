@@ -1,24 +1,20 @@
 # 실행 흐름
 home.jsp
-- 로그인 하지 않거나 실패할 경우: login.html를 include
-- 로그인 성공한 경우
-    - employer: employer.jsp로 forward
-    - employee: employee.jsp로 forward
-- 새로고침해도 그 페이지가 유지되어야 함
-    - ex) 로그인에 성공한 후 새로고침해도 여전히 employer.jsp나 employee.jsp가 forward 되어야 함
-    - 이를 위해 세션을 사용: https://velog.io/@max9106/JSP-Session%EC%84%B8%EC%85%98-j0k5ccyiub
-    - response.redirect를 이용하여도 parameter을 주는 방법(세션 이용): https://samdo0812.tistory.com/24
+- If login fails: include login.html
+- If login successes
+    - employer: forward to employer.jsp
+    - employee: forward to employee.jsp
+- page should be same with refresh
+    - ex) page should forward employer.jsp or employee.jsp
+    - use session: https://velog.io/@max9106/JSP-Session%EC%84%B8%EC%85%98-j0k5ccyiub
+    - give parameter using response.redirect with session: https://samdo0812.tistory.com/24
 
-register.jsp
-- home.jsp에서 로그인하지 않은 경우 이동할 수 있는 버튼을 누르면 이동
-- register에 실패할 경우 실패한 목록을 보여주는 시각적 효과가 있으면 될 듯, 즉 전 페이지로 돌아가진 않음
+# Database
+db name: webdb
 
-# 데이터베이스
-전체 db명: webdb
+DB import/export: https://goodteacher.tistory.com/131
 
-DB import/export 방법: https://goodteacher.tistory.com/131
-
-모든 Table은 utf8로 지정
+Every table is set to utf-8
 
 users: [key, user_id, password, first_name, gubun]이 있는 db table
 

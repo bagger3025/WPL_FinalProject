@@ -1,5 +1,5 @@
 function init() {
-    $(".userbutton").click((e) => {
+    $("#contactusbutton").click((e) => {
         const title = $("#postingTitle").val().trim();
         if (title.length === 0) {
             e.preventDefault();

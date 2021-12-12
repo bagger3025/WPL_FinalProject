@@ -1,59 +1,83 @@
 function init() {
     $(".signin_submit").click((e) => {
-        let validated = true;
         // Validate user id
         console.log("userid: ", $("#userid").val());
+        if($("#userid").val().length >= 30){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("ID should be less then 30 letters");
+            return;
+        }
         const userid = $("#userid").prop("disabled");
         if (userid === false) {
             e.preventDefault();
             e.stopPropagation();
             alert("Validate your ID!");
-            validated = false;
             return;
         }
 
         // Validate user password
         console.log("password: ", $("#userpassword").val());
         const password = $("#userpassword").val();
+        if(password.length >= 30){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("Password should be less then 30 letters");
+            return;
+        }
         if (password.length === 0){
             e.preventDefault();
             e.stopPropagation();
             alert("Check your password!");
-            validated = false;
             return;
         }
 
         // Validate user password again
         console.log("validatepassword: ", $("#uservalpassword").val());
         const password_val = $("#uservalpassword").val();
+        if(password_val.length >= 30){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("Password validation should be less then 30 letters");
+            return;
+        }
         if (password !== password_val) {
             e.preventDefault();
             e.stopPropagation();
             alert("Check your confirm-password!");
-            validated = false;
             return;
         }
 
         // Validate user first name
         console.log("firstname: ", $("#userfirstname").val());
         const userFirstName = $("#userfirstname").val();
+        if(userFirstName.length >= 30){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("First name should be less then 30 letters");
+            return;
+        }
         const re_name = /^[A-Z][A-Za-z]*$/;
         if (!re_name.test(userFirstName)) {
             e.preventDefault();
             e.stopPropagation();
             alert("Check your firstname!");
-            validated = false;
             return;
         }
 
         // Validate user Last name
         console.log("lastname: ", $("#userlastname").val());
         const userLastName = $("#userlastname").val();
+        if(userLastName.length >= 30){
+            e.preventDefault();
+            e.stopPropagation();
+            alert("First name should be less then 30 letters");
+            return;
+        }
         if (!re_name.test(userLastName)) {
             e.preventDefault();
             e.stopPropagation();
             alert("Check your lastname!");
-            validated = false;
             return;
         }
 
@@ -64,15 +88,10 @@ function init() {
             e.preventDefault();
             e.stopPropagation();
             alert("Check your type!");
-            validated = false;
             return;
         }
-        if (validated) {
-            $("#userid").prop("disabled", false);
-            console.log("SUCCESSED");
-        } else {
-            console.log("FAILED");
-        }
+        $("#userid").prop("disabled", false);
+        console.log("SUCCESSED");
     });
 }
 
@@ -176,10 +195,15 @@ $("#id_valid_button").click((e) => {
         alert("Id is empty!");
         return;
     }
+    if($("#userid").val().length >= 30){
+        alert("ID should be less then 30 letters");
+        return;
+    }
+
     $.ajax({
         url: 'validate/validateID.jsp',
         type: 'post',
-        data: { "id" : $("#userid").val() },
+        data: { "id" : $("#userid").val().trim() },
         success:function(rs){
             rs = rs.trim();
             console.log(rs);
@@ -199,5 +223,5 @@ $("#userpassword").on("input", validate_inputs);
 $("#uservalpassword").on("input", validate_inputs);
 $("#userfirstname").on("input", validate_inputs);
 $("#userlastname").on("input", validate_inputs);
-// https://huskdoll.tistory.com/942
+// detecting radio input change https://huskdoll.tistory.com/942
 $("input[name='gubun']:radio").change(validate_inputs);

@@ -51,7 +51,17 @@
 		</header>
 	</div><%
 	if (ps.size() == 0){%>
-		<div class="top-text">There are no jobs. Sorry!</div>		
+		<div class="container">
+			<div class="top-text">There are no jobs. Sorry!</div>
+			<% if (hide_finished) {%>
+					<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div>
+				<%
+				} else {
+				%>
+					<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div>
+				<%
+				}%>	
+		</div>
 	<%} else {%>
 		<div class="container">
 			<div class="top-text"> There <%=(ps.size() == 1) ? "is" : "are" %> <span style="color: red;"><%=ps.size()%></span> job<%= (ps.size() == 1) ? "" : "s" %> looking for you </div>
@@ -62,7 +72,6 @@
 			%>
 				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div>
 			<%
-			
 			}%>
 			<table class="table table-hover align-middle">
 				<colgroup>

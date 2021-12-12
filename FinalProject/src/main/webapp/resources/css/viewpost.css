@@ -24,11 +24,13 @@
     font-weight: bold;
     color: #0984e3;
 }
-
+/* to make word go down https://stackoverflow.com/questions/25033382/text-goes-outside-containing-div/43736971 */
 .post_title{
     font-weight: bold;
     font-size: 50px;
     color: #0984e3;
+    width: 80%;
+    word-wrap: break-word;
 }
 
 .post_wage{
@@ -38,6 +40,8 @@
 .post_content{
     font-size: 20px;
     margin-bottom: 20px;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .post_list{

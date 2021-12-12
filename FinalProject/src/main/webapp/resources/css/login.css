@@ -75,7 +75,7 @@ html {
 }
 
 .login-message{
-    height: 30px;
+    height: auto;
 }
 
 .signup-div{
@@ -103,11 +103,13 @@ html {
 }
 
 .register-success{
+    height: auto;
     margin-bottom: 10px;
     color: #0984e3;
 }
 
 .error-message{
+    height: auto;
     margin-bottom: 10px;
     color: red;
 }

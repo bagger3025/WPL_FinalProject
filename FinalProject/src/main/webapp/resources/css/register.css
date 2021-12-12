@@ -127,6 +127,10 @@ input:focus-visible{
     border-radius: 5px;
 }
 
+#userid{
+    padding-right: 90px;
+}
+
 
 .wronginput{
     padding: 10px 30px 10px 10px !important;

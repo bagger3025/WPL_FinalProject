@@ -7,12 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
-
+	<meta charset="EUC-KR">
+	<title>View Post Page</title>
+	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/common.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/viewpost.css">
 </head>
 <body><%
 	/* DEFINE PAGE */

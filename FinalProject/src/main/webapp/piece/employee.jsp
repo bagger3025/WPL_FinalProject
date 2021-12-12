@@ -33,8 +33,7 @@
 	} else {
 		ps = Post.getPostAll();
 	}
-	userStruct us = (userStruct)session.getAttribute("user");
-	%>
+	userStruct us = (userStruct)session.getAttribute("user");%>
 	<div class="container">
 		<header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
 			<div class="col-md-5">
@@ -52,26 +51,20 @@
 	</div><%
 	if (ps.size() == 0){%>
 		<div class="container">
-			<div class="top-text">There are no jobs. Sorry!</div>
-			<% if (hide_finished) {%>
-					<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div>
-				<%
-				} else {
-				%>
-					<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div>
-				<%
-				}%>	
-		</div>
-	<%} else {%>
+			<div class="top-text">There are no jobs. Sorry!</div><% 
+			if (hide_finished) {%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div><%
+			} else {%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div><%
+			}%>	
+		</div><%
+	} else {%>
 		<div class="container">
-			<div class="top-text"> There <%=(ps.size() == 1) ? "is" : "are" %> <span style="color: red;"><%=ps.size()%></span> job<%= (ps.size() == 1) ? "" : "s" %> looking for you </div>
-			<% if (hide_finished) {%>
-				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div>
-			<%
-			} else {
-			%>
-				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div>
-			<%
+			<div class="top-text"> There <%=(ps.size() == 1) ? "is" : "are" %> <span style="color: red;"><%=ps.size()%></span> job<%= (ps.size() == 1) ? "" : "s" %> looking for you </div><% 
+			if (hide_finished) {%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=false'" class="pagebutton">Show finished jobs</button></div><%
+			} else {%>
+				<div class="finishedjobs"><button onclick="location.href='home.jsp?hidefinished=true'" class="pagebutton">Hide finished jobs</button></div><%
 			}%>
 			<table class="table table-hover align-middle">
 				<colgroup>
@@ -105,8 +98,7 @@
 				</tbody>
 			</table>
 			<div class="employ_page_number justify-content-md-between align-items-center flex-wrap py-3">
-				<div class="col-md-3">
-					<%
+				<div class="col-md-3"><%
 					int maxPage = (ps.size() - 1) / jobsperpage;
 					int nextpage = pageNum + 1;
 					int prevpage = pageNum - 1;
@@ -116,8 +108,7 @@
 				</div>
 				<span class="cd-md-auto display-page"><%= pageNum + 1 %>/<%=maxPage + 1 %></span>
 				<div class="text-end col-md-3"><%
-					if(nextpage <= maxPage){
-						%>
+					if(nextpage <= maxPage){%>
 						<button type="button" class="pagebutton" onclick="location.href='home.jsp?p=<%=nextpage%>&hidefinished=<%=hide_finished%>'">Next Page</button><%
 					}%>
 				</div>

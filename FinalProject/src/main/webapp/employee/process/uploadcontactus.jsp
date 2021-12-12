@@ -5,8 +5,13 @@
 <%
 	String title = request.getParameter("title");
 	String mes = request.getParameter("message");
-	String userkey = Integer.toString(((userStruct)session.getAttribute("user")).key);
-	boolean success = PostContactme.post(title, mes, userkey);
-		
-	response.sendRedirect("../contactus.jsp");
+	userStruct us = (userStruct)session.getAttribute("user");
+	if (us == null){
+		response.sendRedirect("../../home.jsp");
+	} else {
+		String userkey = Integer.toString(us.key);
+		boolean success = PostContactme.post(title, mes, userkey);
+			
+		response.sendRedirect("../contactus.jsp");
+	}
 %>

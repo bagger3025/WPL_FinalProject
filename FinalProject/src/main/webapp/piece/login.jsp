@@ -11,7 +11,6 @@
 	</span>
 </section>
 
-
 <aside class="login_aside">
 	<form method="post" action="<%=TOVALIDATELOGIN %>">
 		<div class="login_guide">

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>Contact us</title>
+	<title>Contact Us</title>
 	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/poststyle.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/common.css">

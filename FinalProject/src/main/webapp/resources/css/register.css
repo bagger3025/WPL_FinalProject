@@ -10,7 +10,7 @@ body{
 
 }
 
-.signin_wrapper{
+.signup_wrapper{
     padding-top: 7%;
     height: 100%;
     background-color: #dcf1ff;
@@ -21,7 +21,7 @@ body{
     text-align: center;
 }
 
-.signin_welcome{
+.signup_welcome{
     grid-column: 1/3;
     font-size: 30px;
     font-weight: bold;
@@ -31,7 +31,7 @@ body{
     /* color: green; */
 }
 
-.signin_form{
+.signup_form{
     display: grid;
     row-gap: 10px;
     column-gap: 5px;
@@ -42,12 +42,12 @@ body{
     margin-right: 60px;
 }
 
-.signin_form .inputlabel{
+.signup_form .inputlabel{
     margin: auto;
 }
 
-.signin_form input[type=text],
-.signin_form input[type=password]{
+.signup_form input[type=text],
+.signup_form input[type=password]{
     width: calc(100% - 40px);
     border-radius: 5px;
     height: 40px;
@@ -57,7 +57,7 @@ body{
     padding: 10px;
 }
 
-.signin_gubun{
+.signup_gubun{
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -65,18 +65,18 @@ body{
     width: 100%;
 }
 
-.signin_gubun_span{
+.signup_gubun_span{
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
 }
 
-.signin_wrapper form span{
+.signup_wrapper form span{
     text-align: left;
 }
 
-.signin_submit{
+.signup_submit{
     grid-column: 1 / 3;
     width: 350px;
     height: 40px;
@@ -87,7 +87,7 @@ body{
     font-weight: bold;
 }
 
-.signin_err_msg{
+.signup_err_msg{
     grid-column: 1 / 3;
     text-align: center;
     color: red;

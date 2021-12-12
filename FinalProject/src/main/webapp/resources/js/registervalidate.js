@@ -79,7 +79,7 @@ function validate_inputs() {
 }
 
 function init() {
-    $(".signin_submit").click((e) => {
+    $(".signup_submit").click((e) => {
         // Validate user id
         if ($("#userid").val().length >= 30) {
             e.preventDefault();

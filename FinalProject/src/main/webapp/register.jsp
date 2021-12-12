@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>Sign in</title>
+	<title>Sign Up</title>
 	<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./resources/css/register.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -13,9 +13,9 @@
 	/* DEFINE PAGE */
 	String VALIDATEREGISTERPAGE = "validate/validateRegister.jsp";
 	String register = (String)session.getAttribute("register");%>
-	<div class="signin_wrapper">
-		<form method="post" action="<%=VALIDATEREGISTERPAGE%>" class="signin_form">
-			<span class="signin_welcome">Join us to get a JOB!</span>
+	<div class="signup_wrapper">
+		<form method="post" action="<%=VALIDATEREGISTERPAGE%>" class="signup_form">
+			<span class="signup_welcome">Join us to get a JOB!</span>
 			<div class="inputlabel"> ID </div>
 			<div class="inputfield" id="id_inputfield">
 				<input type="text" name="id" value="" placeholder="ID" id="userid">
@@ -63,9 +63,9 @@
 			</div>
 			<div class="inputlabel"> Register As </div>
 			<div class="inputfield" id="registeras_inputfield">
-				<span class="signin_gubun" id="usergubun">
-					<span class="signin_gubun_span"><input type="radio" name="gubun" value="EMPLOYER">EMPLOYER</span>
-					<span class="signin_gubun_span"><input type="radio" name="gubun" value="EMPLOYEE">EMPLOYEE</span>
+				<span class="signup_gubun" id="usergubun">
+					<span class="signup_gubun_span"><input type="radio" name="gubun" value="EMPLOYER">EMPLOYER</span>
+					<span class="signup_gubun_span"><input type="radio" name="gubun" value="EMPLOYEE">EMPLOYEE</span>
 				</span>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#d63031" class="bi bi-exclamation-lg wrongalarm" viewBox="0 0 16 16">
 					<path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
@@ -76,11 +76,11 @@
 			</div><%
 			if (register != null){
 				session.removeAttribute("register");%>
-				<div class="signin_err_msg"><%=register%></div><%	
+				<div class="signup_err_msg"><%=register%></div><%	
 			} else {
 				register = "";
 			}%>
-			<input type="submit" value="SIGN UP" class="signin_submit">
+			<input type="submit" value="SIGN UP" class="signup_submit">
 		</form>
 	</div>
 	<script src="resources/js/registervalidate.js"></script>

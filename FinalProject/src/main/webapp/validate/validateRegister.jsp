@@ -24,7 +24,6 @@
 	userStruct us;
 	
 	if (username.equals("")){
-		// TODO shouldn't success
 		us = null;
 	} else {
 		us = HandleLogin.MatchID(username);

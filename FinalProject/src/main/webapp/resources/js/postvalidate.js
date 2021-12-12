@@ -32,5 +32,5 @@ function init() {
     });
 }
 
+
 init();
-console.log("WHy nunu WHy?");

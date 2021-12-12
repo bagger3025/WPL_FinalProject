@@ -48,7 +48,6 @@ public class HandleLogin {
 			pst.setString(1, _username);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				System.out.println(rs.getInt("key"));
 				userStruct us = new userStruct(rs.getInt("key"), rs.getString("user_id"), rs.getString("password"),
 						rs.getString("first_name"), rs.getString("last_name"), rs.getString("gubun"));
 				return us;

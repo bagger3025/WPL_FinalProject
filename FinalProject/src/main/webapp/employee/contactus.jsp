@@ -52,8 +52,8 @@
 				</div>
 				<input type="submit" value="submit" class="userbutton">
 			</form>
-		</div>
-		<%
+		</div><%
 	}%>
+	<script src="../resources/js/contactusvalidate.js"></script>
 </body>
 </html>

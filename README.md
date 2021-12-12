@@ -1,7 +1,6 @@
 # 실행 흐름
 home.jsp
-- 로그인 하지 않을 경우: login.html를 forward
-- 로그인 실패한 경우: login.html를 forward
+- 로그인 하지 않거나 실패할 경우: login.html를 include
 - 로그인 성공한 경우
     - employer: employer.jsp로 forward
     - employee: employee.jsp로 forward
@@ -13,7 +12,6 @@ home.jsp
 register.jsp
 - home.jsp에서 로그인하지 않은 경우 이동할 수 있는 버튼을 누르면 이동
 - register에 실패할 경우 실패한 목록을 보여주는 시각적 효과가 있으면 될 듯, 즉 전 페이지로 돌아가진 않음
-- 기본적으로 first name, id(username), password, validate password, employer과 employee 구분 등을 입력받고 추후에 더 입력받는 것에 따라 db 조정 필요함
 
 # 데이터베이스
 전체 db명: webdb
@@ -50,8 +48,6 @@ post: [key, writer_key, title, contents, finished, money]
 |contents|TEXT|NN|Charset=utf8|
 |finished|TINYINT(1)|NN,UN,ZF|Default='0'|
 |money|INT|NN||
-
-TODO: 시급? 월급? 그리고 위치? 등등..
 
 apply: [key, post_key, user_key]
 
@@ -97,11 +93,11 @@ contactme: [key, userkey, title, message]
 - [x] job에 대해 employee가 apply할 수 있도록 연동
 - [x] job에 대해 employer가 apply를 볼 수 있도록 연동
 - [x] Finish된 job은 apply할 수 없도록 변경
-- [ ] css 적용 (bootstrap?)
+- [x] css 적용 (bootstrap?)
 - [x] contact me 페이지 만들기
-- [ ] 한국어로 작성하면 저장되지 않는 문제
-- [ ] password validate 추가해야함
-- [ ] register page에서 오류가 났을 때 표시해주는 장치가 있어야 함
-- [ ] id 검사하는 장치가 필요
-- [ ] register page에서 실시간 검사
-- [ ] login page에서 알람 표시 및 간격 조절
+- [ ] 한국어로 작성하면 저장되지 않는 문제 - 영어만 저장하도록 약속
+- [x] password validate 추가해야함
+- [x] register page에서 오류가 났을 때 표시해주는 장치가 있어야 함
+- [x] id 검사하는 장치가 필요
+- [x] register page에서 실시간 검사
+- [x] login page에서 알람 표시 및 간격 조절

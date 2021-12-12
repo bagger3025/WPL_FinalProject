@@ -56,5 +56,6 @@
 			</form>
 		</div><%
 	}%>
+	<script src="../resources/js/contactusvalidate.js"></script>
 </body>
 </html>
